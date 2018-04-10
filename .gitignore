@@ -32,4 +32,4 @@
 *.app
 
 #Provided solution folder
-/ProvidedSolutions/*
+ProvidedSolutions/*
