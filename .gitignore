@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+#Provided solution folder
+/ProvidedSolutions/*
