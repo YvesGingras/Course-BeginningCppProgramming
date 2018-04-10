@@ -31,5 +31,5 @@
 *.out
 *.app
 
-#Provided solution folder
-ProvidedSolutions/*
+#'ProvidedSolutions' folder and sub folders
+/ProvidedSolutions/**
