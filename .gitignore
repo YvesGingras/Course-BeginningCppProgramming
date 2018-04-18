@@ -55,6 +55,15 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+#current project 'Course-BeginningCppProgramming'
+/.idea/**
+Section2/.idea/**
+/Section6/.idea/**
+/Section6/InitializingVariables/.idea/**
+/Challanges/.idea/**
+/Challanges/12-PointersAndReferences/.idea/**
+
+
 # CMake
 cmake-build-debug/
 cmake-build-release/
