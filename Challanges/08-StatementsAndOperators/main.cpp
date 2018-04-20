@@ -8,31 +8,76 @@ int main() {
 
     int changeAmount{}, dollars{}, quarters{}, dimes{}, nickels{}, pennies{}, remaining{};
 
+    const int dollarValue{100}, quarterValue{25}, dimeValue{10}, nickelValue{5};
+
     cout << "Enter in 'cents (integer)', the amount of change to distribute: ";
     cin >> changeAmount;
 
-    dollars = changeAmount / 100;
-    remaining = changeAmount - dollars * 100;
+    dollars = changeAmount / dollarValue;
+    remaining = changeAmount - dollars * dollarValue;
 
-    quarters = remaining / 25;
-    remaining -= quarters * 25;
+    quarters = remaining / quarterValue;
+    remaining -= quarters * quarterValue;
 
-    dimes = remaining / 10;
-    remaining -= dimes * 10;
+    dimes = remaining / dimeValue;
+    remaining -= dimes * dimeValue;
 
-    nickels = remaining / 5;
-    remaining -= nickels * 5;
+    nickels = remaining / nickelValue;
+    remaining -= nickels * nickelValue;
 
     pennies = remaining;
 
     cout << endl;
     cout << "===================================" << endl;
-    cout << "Distribute chane as follow:" << endl
+    cout << "Distribute change as follow:" << endl
          << "Dollars: " << dollars << endl
          << "Quarters: " << quarters << endl
          << "Dimes: " << dimes << endl
          << "Nickels: " << nickels << endl
          << "Pennies: " << pennies << endl;
+
+/*===================================================================*/
+    dollars = quarters = dimes = nickels = pennies = 0;
+
+    dollars = changeAmount / dollarValue;
+    remaining = changeAmount % dollarValue;
+
+    quarters = remaining / quarterValue;
+    remaining %= quarterValue;
+
+    dimes = remaining / dimeValue;
+    remaining %= dimeValue;
+
+    nickels = remaining / nickelValue;
+    remaining %= nickelValue;
+
+    pennies = remaining;
+
+    cout << endl;
+    cout << "=============(using module operator)======================" << endl;
+    cout << "Distribute change as follow:" << endl
+         << "Dollars: " << dollars << endl
+         << "Quarters: " << quarters << endl
+         << "Dimes: " << dimes << endl
+         << "Nickels: " << nickels << endl
+         << "Pennies: " << pennies << endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return 0;
 }
