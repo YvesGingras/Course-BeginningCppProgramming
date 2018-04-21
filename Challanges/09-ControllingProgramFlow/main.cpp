@@ -30,7 +30,7 @@ int main() {
         //print to screen
         if(selection == 'P' || selection== 'p') {
             if (integerList.empty())
-                cout << "The list is empty." << endl;
+                cout << " [] - The list is empty." << endl;
             else {
                 //build printable list
                 cout << "[";
@@ -46,24 +46,25 @@ int main() {
             cout << "Enter an integer value: ";
             cin >> addedInteger;
             integerList.push_back(addedInteger);
+            cout << addedInteger << " added." << endl;
         }
         // calculate average
         else if (selection == 'M' || selection== 'm') {
             if (integerList.empty()) {
-                cout << "The list is empty." << endl;
+                cout << "No data available!" << endl;
                 continue;
             }
 
-            double total{};
+            int total{};
             for (auto integerValue : integerList)
                 total += integerValue;
 
-            cout << "The mean is: " << (total / integerList.size());
+            cout << "The mean is: " << (static_cast<double>(total)/integerList.size());
         }
         //get smallest
         else if (selection == 'S' || selection== 's') {
             if (integerList.empty()) {
-                cout << "The list is empty." << endl;
+                cout << "No data available!" << endl;
                 continue;
             }
 
@@ -77,7 +78,7 @@ int main() {
         //get largest
         else if (selection == 'L' || selection== 'l') {
             if (integerList.empty()) {
-                cout << "The list is empty." << endl;
+                cout << "No data available!" << endl;
                 continue;
             }
 
