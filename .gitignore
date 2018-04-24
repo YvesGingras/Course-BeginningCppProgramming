@@ -33,7 +33,8 @@
 
 #'ProvidedSolutions' folder and sub folders
 /ProvidedSolutions/**
-
+/Challanges/10-CharactersAndStrings/**
+#/Challanges/11-Functions/**
 #************************
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -66,6 +67,8 @@ Section2/.idea/**
 /Challanges/07-ArraysAndVectors/.idea/**
 /Challanges/08-StatementsAndOperators/.idea/**
 /Challanges/09-ControllingProgramFlow/.idea/**
+/Challanges/10-CharactersAndStrings/.idea/**
+/Challanges/11-Functions/.idea/**
 
 
 

@@ -6,6 +6,8 @@ add_subdirectory(06-VariablesAndConstants)
 add_subdirectory(07-ArraysAndVectors)
 add_subdirectory(08-StatementsAndOperators)
 add_subdirectory(09-ControllingProgramFlow)
+add_subdirectory(10-CharactersAndStrings)
+add_subdirectory(11-Functions)
 add_subdirectory(12-PointersAndReferences)
 
 add_executable(Challanges main.cpp
@@ -13,5 +15,7 @@ add_executable(Challanges main.cpp
                 07-ArraysAndVectors main.cpp
                 08-StatementsAndOperators main.cpp
                 09-ControllingProgramFlow
+                10-CharactersAndStrings main.cpp
+                11-Functions main.cpp
                 12-PointersAndReferences main.cpp
                 )
