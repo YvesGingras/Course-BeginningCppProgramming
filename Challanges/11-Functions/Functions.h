@@ -15,24 +15,26 @@ void RunProcess();
 //void GetLargest(const vector<int> &integerList);
 //void ClearData(const vector<int> &integerList);
 
+bool Find(const vector<int> &vector, int searchedValue);
+
 //methods
 char GetUserInput() {
     char selection{};
 
     cout << "\n -----------------------------" << endl;
-    cout << "P - Print numbers" << endl;
     cout << "A - Add a number" << endl;
-    cout << "M - Display mean of the numbers" << endl;
-    cout << "S - Display the smallest number" << endl;
-    cout << "L - Display the largest number" << endl;
     cout << "C - Clear current data" << endl;
+    cout << "F - Find an integer" << endl;
+    cout << "L - Display the largest number" << endl;
+    cout << "M - Display mean of the numbers" << endl;
+    cout << "P - Print numbers" << endl;
     cout << "Q - Quit" << endl;
+    cout << "S - Display the smallest number" << endl;
 
     cout << "\nEnter your selection: ";
     cin >> selection;
-    selection = static_cast<char>(toupper(selection));
 
-    return selection;
+    return static_cast<char>(toupper(selection));
 }
 
 void PrintToScreen(const vector<int> &integerList) {
@@ -101,3 +103,28 @@ void ClearData(vector<int> &integerList) {
     integerList.clear();
     cout << " [] - The list is now empty." << endl;
 }
+
+void HandleFind(const vector<int> &integerList) {
+    int searchedValue;
+    cout << "Enter number to find: ";
+    cin >> searchedValue;
+
+    if (Find(integerList,searchedValue))
+        cout << searchedValue << " was found.";
+    else
+        cout << searchedValue << " was not found.";
+}
+
+bool Find(const vector<int> &vector, int searchedValue) {
+    for (auto &&item : vector) {
+        if (item == searchedValue)
+            return true;
+    }
+    return false;
+}
+
+
+
+
+
+

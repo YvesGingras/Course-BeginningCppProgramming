@@ -28,6 +28,9 @@ void RunProcess() {
             case 'A':
                 AddNumber(integerList);
                 break;
+            case 'F':
+                HandleFind(integerList);
+                break;
             case 'M':
                 CalculateAverage(integerList);
                 break;
