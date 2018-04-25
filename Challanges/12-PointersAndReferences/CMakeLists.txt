@@ -3,4 +3,4 @@ project(12_PointersAndReferences)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(12_PointersAndReferences main.cpp)
+add_executable(12_PointersAndReferences main.cpp PointersAndReferences.h)
