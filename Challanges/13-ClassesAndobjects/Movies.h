@@ -10,13 +10,20 @@
 
 class Movies
 {
+private:
+    std::vector<Movie> *m_movies;
+
 public:
+    Movies();
+
+    Movies(Movies &source);
+
+    ~Movies();
+
     bool Add(const std::string &name, const std::string &rating, int watched) ;
     bool IncrementWatched(const std::string &name);
     bool IsMoviePresent(const std::string &name);
     void Display() const;
-private:
-    std::vector<Movie> m_movies;
 };
 
 
