@@ -26,7 +26,7 @@
 *.a
 *.lib
 
-# Executables
+# Executable s
 *.exe
 *.out
 *.app
@@ -62,14 +62,14 @@ Section2/.idea/**
 /Section6/.idea/**
 /Section6/InitializingVariables/.idea/**
 /Challanges/.idea/**
-/Challanges/12-PointersAndReferences/.idea/**
 /Challanges/06-VariablesAndConstants/.idea/**
 /Challanges/07-ArraysAndVectors/.idea/**
 /Challanges/08-StatementsAndOperators/.idea/**
 /Challanges/09-ControllingProgramFlow/.idea/**
 /Challanges/10-CharactersAndStrings/.idea/**
 /Challanges/11-Functions/.idea/**
-
+/Challanges/12-PointersAndReferences/.idea/**
+/Challanges/13-ClassesAndobjects/.idea/**
 
 
 
