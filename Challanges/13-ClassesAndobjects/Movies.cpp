@@ -7,33 +7,17 @@
 
 using namespace std;
 
-const vector<Movie> &Movies::GetMovies() const {
-    return m_movies;
-}
-
-void Movies::SetMovies(const vector<Movie> &movies) {
-    m_movies = movies;
-}
-
 bool Movies::Add(const string &name, const string &rating, int watched) {
-    Movie movie{};
-
     if (IsMoviePresent(name))
         return false;
 
-    movie.SetName(name);
-    movie.SetRating(rating);
-    movie.SetWatched(watched);
+    Movie movie{name,rating,watched};
     m_movies.push_back(movie);
-//    IncrementWatched(movie.GetName());
-
     return true;
 }
 
 bool Movies::IsMoviePresent(const std::string &name) {
-    Movie movie{};
-
-    for (auto &&movieItem : m_movies) {
+    for (const auto &movieItem : m_movies) {
         const auto &movieName = movieItem.GetName();
         if (movieName == name)
             return true;
@@ -44,7 +28,7 @@ bool Movies::IsMoviePresent(const std::string &name) {
 
 bool Movies::IncrementWatched(const std::string &name) {
     if (IsMoviePresent(name)) {
-        for (auto &&movieItem : m_movies) {
+        for (auto &movieItem : m_movies) {
             if (movieItem.GetName() == name){
                 movieItem.SetWatched(1);
 
@@ -56,7 +40,7 @@ bool Movies::IncrementWatched(const std::string &name) {
     return false;
 }
 
-void Movies::Display() {
+void Movies::Display() const {
     if (m_movies.empty()){
         cout<< "No movies to display\n" << endl;
         return;
@@ -64,11 +48,8 @@ void Movies::Display() {
 
     cout << "\n===================================" << endl;
     for (auto &&movie : m_movies) {
-           cout << movie.GetName() << ", "
-                << movie.GetRating() << ", "
-                << movie.GetWatched() << ", "  << endl;
+        movie.Display();
         }
-
     cout << "===================================\n" << endl;
 }
 

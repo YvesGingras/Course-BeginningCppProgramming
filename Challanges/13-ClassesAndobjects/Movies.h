@@ -11,13 +11,10 @@
 class Movies
 {
 public:
-    const std::vector<Movie> &GetMovies() const;
-    void SetMovies(const std::vector<Movie> &movies);
-
     bool Add(const std::string &name, const std::string &rating, int watched) ;
     bool IncrementWatched(const std::string &name);
     bool IsMoviePresent(const std::string &name);
-    void Display();
+    void Display() const;
 private:
     std::vector<Movie> m_movies;
 };

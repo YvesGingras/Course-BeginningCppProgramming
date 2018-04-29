@@ -10,7 +10,14 @@
 
 class Movie
 {
+private:
+    std::string m_name;
+    std::string m_rating;
+    int m_watched;
+
 public:
+   Movie(const std::string &name, const std::string &rating, int watched);
+
     const std::string &GetName() const;
 
     void SetName(const std::string &name);
@@ -19,14 +26,11 @@ public:
 
     void SetRating(const std::string &rating);
 
-    int GetWatched();
+    int GetWatched() const;
 
     void SetWatched(int watched);
 
-private:
-    std::string m_name{};
-    std::string m_rating{};
-    int m_watched{};
+    void Display() const;
 
 };
 #endif //CHALLANGES_MOVIE_H
