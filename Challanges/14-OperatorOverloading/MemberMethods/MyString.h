@@ -18,25 +18,19 @@ public:
     MyString &operator=(const MyString &rhs);     // Copy assignment
     MyString &operator=(MyString &&rhs);           // Move assignment
 
-    //Equality operators
-    bool operator==(const MyString& rhs);
+
+    //Overloaded operators member methods
+    MyString operator-() const;
+    MyString operator+(const MyString& rhs) const;
+    bool operator==(const MyString& rhs) const;
     bool operator!=(const MyString& rhs) const;
-
-    //Relational operators
+    bool operator<(const MyString& rhs) const;
     bool operator>(const MyString& rhs) const;
-    bool operator<(const MyString& rhs);
-
-    //unary minus
-    MyString operator-();
+    MyString& operator+=(const MyString& rhs);
+    MyString operator*(int multiplier) const;
+    MyString& operator*=(int multiplier);
     MyString& operator++();
     const MyString operator++(int);
-
-    //Overloaded concatenation operator
-    MyString operator+(const MyString& rhs);
-    MyString& operator+=(const MyString& rhs);
-    MyString operator*(int multiplier);
-    MyString& operator*=(int multiplier);
-
 
     void display() const;
     

@@ -2,6 +2,8 @@
 #include <cstring>
 #include "MyString.h"
 
+using namespace std;
+
  // No-args constructor
 MyString::MyString()
     : str{nullptr} {
@@ -26,7 +28,7 @@ MyString::MyString(const MyString &source)
     : str{nullptr} {
         str = new char[strlen(source.str)+ 1];
         strcpy(str, source.str);
- //       std::cout << "Copy constructor used" << std::endl;
+ //       cout << "Copy constructor used" << endl;
 
 }
 
@@ -34,7 +36,7 @@ MyString::MyString(const MyString &source)
 MyString::MyString( MyString &&source)
     :str(source.str) {
         source.str = nullptr;
-//        std::cout << "Move constructor used" << std::endl;
+//        cout << "Move constructor used" << endl;
 }
 
  // Destructor
@@ -44,7 +46,7 @@ MyString::~MyString() {
 
  // Copy assignment
 MyString &MyString::operator=(const MyString &rhs) {
-//    std::cout << "Using copy assignment" << std::endl;
+//    cout << "Using copy assignment" << endl;
 
     if (this == &rhs) 
         return *this;
@@ -56,7 +58,7 @@ MyString &MyString::operator=(const MyString &rhs) {
 
 // Move assignment
 MyString &MyString::operator=( MyString &&rhs) {
-//    std::cout << "Using move assignment" << std::endl;
+//    cout << "Using move assignment" << endl;
     if (this == &rhs) 
         return *this;
     delete [] str;
@@ -66,30 +68,12 @@ MyString &MyString::operator=( MyString &&rhs) {
 }
 
 
-//Equality operator
-bool MyString::operator==(const MyString& rhs) {
-    return std::strcmp(this->str,rhs.str) == 0;
-}
+//Overloaded operators member methods
+MyString MyString::operator-() const {
+    auto buffer = new char[get_length() +1];
+    strcpy(buffer,str);
 
-bool MyString::operator!=(const MyString& rhs) const {
-    return std::strcmp(this->str, rhs.str) != 0;
-}
-
-//Relational operators
-bool MyString::operator>(const MyString& rhs) const {
-    return std::strcmp(this->str, rhs.str) > 0;
-}
-
-bool MyString::operator<(const MyString& rhs) {
-    return std::strcmp(this->str,rhs.str) < 0;
-}
-
-//Unary '-' operator
-MyString MyString::operator-() {
-    auto buffer = new char[this->get_length() +1];
-    std::strcpy(buffer,this->str);
-
-    for (size_t i = 0; i < std::strlen(buffer); ++i) {
+    for (size_t i = 0; i < strlen(buffer); ++i) {
         buffer[i] = static_cast<char>(tolower(buffer[i]));
     }
 
@@ -99,16 +83,54 @@ MyString MyString::operator-() {
     return result;
 }
 
-MyString& MyString::operator++() {
-    auto buffer = new char[this->get_length() + 1];
-    std::strcpy(buffer,this->str);
+MyString MyString::operator+(const MyString& rhs) const {
+    auto buffer = new char[strlen(str) + strlen(rhs.str) + 1];
+    strcpy(buffer,str);
+    strcat(buffer,rhs.str);
 
-    for (size_t i = 0; i < std::strlen(buffer); ++i) {
-        buffer[i] = static_cast<char>(toupper(buffer[i]));
+    MyString result{buffer};
+    delete[] buffer;
+
+    return result;
+}
+
+bool MyString::operator==(const MyString& rhs) const {
+    return strcmp(str,rhs.str) == 0;
+}
+
+bool MyString::operator!=(const MyString& rhs) const {
+    return strcmp(str, rhs.str) != 0;
+}
+
+bool MyString::operator<(const MyString& rhs) const {
+    return strcmp(str,rhs.str) < 0;
+}
+
+bool MyString::operator>(const MyString& rhs) const {
+    return strcmp(str, rhs.str) > 0;
+}
+
+MyString& MyString::operator+=(const MyString& rhs) {
+    return *this = *this + rhs;;
+}
+
+MyString MyString::operator*(int multiplier) const {
+    MyString result;
+    for (size_t i = 0; i < multiplier; ++i) {
+        result += *this;
     }
 
-    *this = buffer;
-    delete [] buffer;
+    return result;
+}
+
+MyString& MyString::operator*=(int multiplier) {
+    return *this = *this * multiplier;
+}
+
+MyString& MyString::operator++() {
+    for (size_t i = 0; i < strlen(str); ++i) {
+        str[i] = static_cast<char>(toupper(str[i]));
+    }
 
     return *this;
 }
@@ -120,53 +142,14 @@ const MyString MyString::operator++(int) {
     return temp;
 }
 
-//Overloaded concatenation operators
-MyString MyString::operator+(const MyString& rhs) {
-    auto buffer = new char[std::strlen(this->str) + std::strlen(rhs.str) + 1];
-    std::strcpy(buffer,str);
-    std::strcat(buffer,rhs.str);
-
-    MyString result{buffer};
-    delete[] buffer;
-
-    return result;
-}
-
-MyString& MyString::operator+=(const MyString& rhs) {
-    MyString result;
-    result = *this + rhs;
-    *this = result;
-
-    return *this;
-}
-
-MyString MyString::operator*(int multiplier) {
-    MyString result;
-    for (size_t i = 0; i < multiplier; ++i) {
-        result += this->str;
-    }
-
-    return result;
-}
-
-MyString& MyString::operator*=(int multiplier) {
-    MyString tempResult;
-    for (size_t i = 0; i < multiplier; ++i) {
-        tempResult += *this;
-    }
-    *this = tempResult;
-
-    return *this;
-}
-
 // overloaded insertion operator
-std::ostream &operator<<(std::ostream &os, const MyString &rhs) {
+ostream &operator<<(ostream &os, const MyString &rhs) {
     os << rhs.str;
     return os;
 }
 
 // overloaded extraction operator
-std::istream &operator>>(std::istream &in, MyString &rhs) {
+istream &operator>>(istream &in, MyString &rhs) {
     auto*buff = new char[1000];
     in >> buff;
     rhs = MyString{buff};
@@ -176,7 +159,7 @@ std::istream &operator>>(std::istream &in, MyString &rhs) {
 
 // Display method
 void MyString::display() const {
-    std::cout << str << " : " << get_length() << std::endl;
+    cout << str << " : " << get_length() << endl;
 }
 
 // getters
