@@ -137,7 +137,7 @@ MyString& operator++(MyString& source) {
 
 const MyString operator++(MyString& source, int) {
     MyString temp(source);
-    operator++(source);
+    ++source; // same as: operator++(source);
 
     return temp;
 }
