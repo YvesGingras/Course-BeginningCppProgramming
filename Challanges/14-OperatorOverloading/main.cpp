@@ -1,76 +1,28 @@
-// Section 14
-// Challenge
 #include <iostream>
-#include "GlobalFunctions/MyString.h"
+#include <vector>
+#include "MemberMethods/MyString.h"
 
 using namespace std;
 
 int main() {
-    cout << "\nHello, 14-Operator Overloading Challenge!" << endl;
+    cout << "\nHello, 14-Operator Overloading!" << endl;
     cout << endl;
     /*#######################################################*/
 
+    MyString larry {"Larry"};
+    MyString moe {"Moe"};
+    MyString curly;
+
+    cout << "Enter the third stooge's first name: ";
+    cin >> curly;
+
+    cout << "The three stooges are " << larry << ", " << moe << ", and " << curly << endl;
+
+    cout << "\nEnter the three stooges names separated by a space: ";
+    cin >> larry >> moe >> curly;
+
+    cout << "The three stooges are " << larry << ", " << moe << ", and " << curly << endl;
 
 
-
-    cout << boolalpha << endl;
-    MyString a {"frank"};
-    MyString b {"frank"};
-    b.display();
-    a.display();
-
-
-    cout << (a==b) << endl;         // true
-    cout << (a!=b) << endl;          // false
-
-    b = "george";
-
-    cout << (a==b) << endl;         // false
-    cout << (a!=b) << endl;          // true
-    cout << (a<b) << endl;          // true
-    cout << (a>b) << endl;           // false
-
-    MyString s1 {"YvES GinGRAS"};
-    s1 = -s1;       
-    cout << s1 << endl;               // frank              
-
-    s1 = s1 + "*****";
-    cout << s1 << endl;               // frank*****       
-
-    s1 += "-----";                        // frank*****-----
-    cout << s1 << endl;
-
-    MyString s2{"12345"};
-    s1 = s2 * 3;
-    cout << s1 << endl;              // 123451234512345
-
-    MyString s3{"abcdef"};
-    s3 *= 5;
-    cout << s3 << endl;             // abcdefabcdefabcdefabcdefabcdef
-
-    MyString s = "frank";
-    ++s;
-    cout << s << endl;                  // FRANK
-
-    s = -s; 
-    cout << s << endl;                  // frank
-
-    MyString result;
-    result = ++s;                           
-    cout << s << endl;                  // FRANK
-    cout << result << endl;           // FRANK
-
-    s = "Frank";
-    s++;
-    cout << s << endl;                  // FRANK
-
-    s = -s;
-    cout << s << endl;                  // frank
-    result = s++;
-    cout << s << endl;                  // FRANK
-    cout << result << endl;           // frank
-/*
-    */
     return 0;
 }
-
