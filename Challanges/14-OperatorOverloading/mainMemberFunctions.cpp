@@ -1,7 +1,7 @@
 // Section 14
 // Challenge
 #include <iostream>
-#include "GlobalFunctions/MyString.h"
+#include "MemberMethods/MyString.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int main() {
 
 
 
-
+    
     cout << boolalpha << endl;
     MyString a {"frank"};
     MyString b {"frank"};
@@ -24,7 +24,6 @@ int main() {
     cout << (a!=b) << endl;          // false
 
     b = "george";
-
     cout << (a==b) << endl;         // false
     cout << (a!=b) << endl;          // true
     cout << (a<b) << endl;          // true

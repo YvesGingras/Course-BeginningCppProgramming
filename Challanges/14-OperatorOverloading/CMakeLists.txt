@@ -3,4 +3,4 @@ project(14_OperatorOverloading)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(14_OperatorOverloading main.cpp MemberMethods/MyString.cpp MemberMethods/MyString.h)
+add_executable(14_OperatorOverloading main.cpp GlobalFunctions/MyString.cpp GlobalFunctions/MyString.h)
