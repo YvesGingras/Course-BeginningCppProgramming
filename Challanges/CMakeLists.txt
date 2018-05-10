@@ -11,6 +11,8 @@ add_subdirectory(11-Functions)
 add_subdirectory(12-PointersAndReferences)
 add_subdirectory(13-ClassesAndobjects)
 add_subdirectory(14-OperatorOverloading)
+add_subdirectory(15-Inheritance)
+
 
 add_executable(Challanges main.cpp
                 06-VariablesAndConstants main.cpp
@@ -22,4 +24,5 @@ add_executable(Challanges main.cpp
                 12-PointersAndReferences main.cpp
                 13-ClassesAndobjects main.cpp
                 14-OperatorOverloading main.cpp
+                15-Inheritance main.cpp
                 )
