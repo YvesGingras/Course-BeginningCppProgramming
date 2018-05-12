@@ -10,16 +10,21 @@ TrustAccount::TrustAccount(std::string name, double balance, double intRate)
 }
 
 std::ostream& operator<<(std::ostream& os, const TrustAccount& account) {
-    os << "[Trust Account: " << account.name << ": " << account.balance << ", " << account.int_rate << "%]";
+    os << "[Trust Account: "
+        << account.name << ": "
+        << account.balance << ", "
+        << account.int_rate << "%, "
+        << "withdawals: " << account.m_withdrawalCounter << "]";
+
     return os;
 }
 
 bool TrustAccount::deposit(double amount) {
-    return Savings_Account::deposit(amount > m_bonusThreshold ? amount + m_bonusValue : amount);
+    return Savings_Account::deposit(amount > bonusThreshold ? amount + bonusValue : amount);
 }
 
 bool TrustAccount::withdraw(double amount) {
-    if (m_withdrawalCounter <= 3){
+    if (m_withdrawalCounter < maxWithdrawalQty){
         if (amount < balance * .20){
             m_withdrawalCounter++;
             return Account::withdraw(amount);

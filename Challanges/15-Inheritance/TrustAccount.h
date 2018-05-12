@@ -10,16 +10,18 @@
 
 class TrustAccount : public Savings_Account
 {
-    static constexpr const char *m_defName = "Unnamed Trust Account";
-    static constexpr double m_defBalance = 0.0;
-    static constexpr double m_defIntRate = 0.0;
+    static constexpr const char *defName = "Unnamed Trust Account";
+    static constexpr double defBalance = 0.0;
+    static constexpr double defIntRate = 0.0;
+    const double bonusThreshold {5000};
+    const double bonusValue = {50};
+    const int maxWithdrawalQty{3};
 
-    const double m_bonusThreshold {5000};
-    const double m_bonusValue = {50};
-    int m_withdrawalCounter{1};
+    int m_withdrawalCounter{0};
+
 
 public:
-    TrustAccount(std::string name = m_defName, double balance = m_defBalance, double intRate = m_defIntRate);
+    TrustAccount(std::string name = defName, double balance = defBalance, double intRate = defIntRate);
     bool deposit(double amount);
     bool withdraw(double amount);
 
