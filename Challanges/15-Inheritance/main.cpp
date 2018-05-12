@@ -55,5 +55,10 @@ int main() {
     display(trustAccounts);
     deposit(trustAccounts,5001);
     deposit(trustAccounts,-1);
+    withdraw(trustAccounts,10);
+    withdraw(trustAccounts,20);
+    withdraw(trustAccounts,1200);
+    withdraw(trustAccounts,50);
+    withdraw(trustAccounts,1);
     return 0;
 }
