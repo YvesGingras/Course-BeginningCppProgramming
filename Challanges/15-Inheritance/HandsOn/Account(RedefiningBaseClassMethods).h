@@ -14,7 +14,7 @@ public:
     Account(double balance);
 
     void deposit(double amount);
-    void withdraw(double amount);
+    bool withdraw(double amount);
 };
 
 #endif // _ACCOUNT_H_
