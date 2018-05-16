@@ -21,13 +21,20 @@ bool Account::withdraw(double amount) {
         return false;
 }
 
+void Account::Print(std::ostream& ostream) const {
+     ostream.precision(2);
+     ostream << std::fixed;
+    ostream <<  "[Account-Print: "
+        << name << ": "
+        << balance << "]";
+}
+
 double Account::get_balance() const {
     return balance;
 }
 
-std::ostream &operator<<(std::ostream &os, const Account &account) {
-    os << "[Account: "
-        << account.name << ": "
-        << account.balance << "]";
-    return os;
+//Friend fucntion (delcared in IPrintable)
+std::ostream& operator<<(std::ostream& ostream, const IPrintable& object) {
+    object.Print(ostream);
+    return ostream;
 }

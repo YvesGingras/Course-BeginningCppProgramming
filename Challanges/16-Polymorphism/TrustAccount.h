@@ -29,7 +29,7 @@ public:
     void Print(std::ostream& ostream) const override;
 
     //overloaded operator
-    friend std::ostream &operator<<(std::ostream &os, const TrustAccount &account);
+//    friend std::ostream &operator<<(std::ostream &os, const TrustAccount &account);
 
 
 };

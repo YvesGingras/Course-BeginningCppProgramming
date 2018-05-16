@@ -9,7 +9,7 @@
 
 class CheckingAccount : public Account
 {
-    friend std::ostream& operator<<(std::ostream& ostream, CheckingAccount checkingAccount);
+//    friend std::ostream& operator<<(std::ostream& ostream, CheckingAccount checkingAccount);
 
 private:
     static constexpr const char *m_defName = "Unnamed Checking Account";
@@ -29,5 +29,6 @@ public:
     bool deposit(double amount) override;
     bool withdraw(double amount) override;
     void Print(std::ostream& ostream) const override;
+
 };
 #endif //CHALLANGES_CHECKINGACCOUNT_H

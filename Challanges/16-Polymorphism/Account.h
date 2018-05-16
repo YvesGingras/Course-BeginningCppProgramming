@@ -5,8 +5,8 @@
 #include <string>
 #include "IPrintable.h"
 
-class Account : public IPrintable {
-    friend std::ostream &operator<<(std::ostream &os, const Account &account);
+class Account : public IPrintable{
+//    friend std::ostream &operator<<(std::ostream &os, const Account &account);
 
 private:   
     static constexpr const char *def_name = "Unnamed Account";
@@ -18,9 +18,11 @@ protected:
 
 public:
     Account(std::string name = def_name, double balance = def_balance);
-    // Account(std::string name = "Unamed Account", double balance = 0.0);
+    ~Account() override = default;;
+
     virtual bool deposit(double amount) = 0;
     virtual bool withdraw(double amount) = 0;
+    void Print(std::ostream& ostream) const override;
     double get_balance() const;
 
 };

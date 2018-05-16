@@ -10,7 +10,6 @@ CheckingAccount::CheckingAccount(std::string name, double balance, double withdr
     //Empty
 }
 
-
 bool CheckingAccount::withdraw(double amount) {
     return Account::withdraw(amount + m_withdrawalFee);
 }
@@ -19,15 +18,11 @@ bool CheckingAccount::deposit(double amount) {
     return Account::deposit(amount);
 }
 
-std::ostream& operator<<(std::ostream& ostream, CheckingAccount checkingAccount) {
-    ostream << "[Checking Account: "
-            << checkingAccount.name << ": "
-            << checkingAccount.balance << ", "
-            << checkingAccount.m_withdrawalFee;
-
-    return ostream;
-}
-
 void CheckingAccount::Print(std::ostream& ostream) const {
-
+    ostream.precision(2);
+    ostream << std::fixed;
+    ostream << "[Checking Account-Print: "
+            << name << ": "
+            << balance << ", "
+            << m_withdrawalFee;
 }

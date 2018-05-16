@@ -3,7 +3,7 @@
 #include "Account.h"
 
 class Savings_Account: public Account {
-    friend std::ostream &operator<<(std::ostream &os, const Savings_Account &account);
+//    friend std::ostream &operator<<(std::ostream &os, const Savings_Account &account);
 
 private:
     static constexpr const char *def_name = "Unnamed Savings Account";
@@ -15,6 +15,8 @@ protected:
 
 public:
     Savings_Account(std::string name = def_name, double balance =def_balance, double int_rate = def_int_rate);
+    ~Savings_Account() override = default;
+
     bool deposit(double amount) override;
     bool withdraw(double amount) override;
     void Print(std::ostream& ostream) const override;
