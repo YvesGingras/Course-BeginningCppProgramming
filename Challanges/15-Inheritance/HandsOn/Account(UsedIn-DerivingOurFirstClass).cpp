@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "Account.h"
+#include "../../17-SmartPointers/Account.h"
 
 Account::Account()
     : m_balance{0}, m_name{"An Account"} {}

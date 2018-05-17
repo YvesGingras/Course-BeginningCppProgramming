@@ -1,6 +1,6 @@
 #ifndef _SAVINGS_ACCOUNT_H_
 #define _SAVINGS_ACCOUNT_H_
-#include "Account.h"
+#include "../../17-SmartPointers/Account.h"
 
 // Deposit method increments amount to be deposited by amount * int_rate percentage!!
 // Withdraw method does not specialize
