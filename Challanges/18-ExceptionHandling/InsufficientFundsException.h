@@ -11,12 +11,12 @@ class InsufficientFundsException : public std::exception
 {
 
 public:
-    InsufficientFundsException() = default;
+    InsufficientFundsException() noexcept = default;
     ~InsufficientFundsException() = default;
 
     const char* what() const noexcept override {
-        return "Insufficient funds to complete withdraw operation.";
-    };
+        return "Insufficient funds exception.";
+    }
 };
 
 

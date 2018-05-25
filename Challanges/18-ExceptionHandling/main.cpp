@@ -4,6 +4,7 @@
 #include "CheckingAccount.h"
 #include "InsufficientFundsException.h"
 #include "IllegalBalanceException.h"
+#include "Savings_Account.h"
 
 //#include "Account.h"
 //#include "CheckingAccount.h"
@@ -21,7 +22,7 @@ int main() {
 
     try {
         double depositAmount{100.0};
-        unique_ptr<Account> moeAccount = make_unique<CheckingAccount>("Moe", depositAmount);
+        unique_ptr<Account> moeAccount = make_unique<Savings_Account>("Moe", depositAmount);
         cout << "Uses moeAccount" << endl;
 
         double withdrawAmount{200.0};

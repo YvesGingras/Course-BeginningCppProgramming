@@ -7,8 +7,8 @@
 
 class IllegalBalanceException : public std::exception {
 public:
-    IllegalBalanceException() = default;
-    virtual ~IllegalBalanceException() = default;
+    IllegalBalanceException() noexcept = default;
+    ~IllegalBalanceException() = default;
 
     const char* what() const noexcept override {
         return "Illegal balance exception";
