@@ -1,10 +1,10 @@
 #include <iostream>
 #include <memory>
-#include "Account.h"
-#include "CheckingAccount.h"
-#include "InsufficientFundsException.h"
-#include "IllegalBalanceException.h"
-#include "Savings_Account.h"
+#include "AccountsClasses/Account.h"
+#include "AccountsClasses/CheckingAccount.h"
+#include "AccountsClasses/InsufficientFundsException.h"
+#include "AccountsClasses/IllegalBalanceException.h"
+#include "AccountsClasses/Savings_Account.h"
 
 //#include "Account.h"
 //#include "CheckingAccount.h"
@@ -25,7 +25,7 @@ int main() {
         unique_ptr<Account> moeAccount = make_unique<Savings_Account>("Moe", depositAmount);
         cout << "Uses moeAccount" << endl;
 
-        double withdrawAmount{200.0};
+        double withdrawAmount{50.0};
         if (!moeAccount->withdraw(withdrawAmount))
             throw InsufficientFundsException();
 

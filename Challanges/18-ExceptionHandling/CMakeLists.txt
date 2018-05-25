@@ -3,9 +3,12 @@ project(18_ExceptionHandling)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(
-        18_ExceptionHandling main.cpp
-        Account.h Account.cpp
-        Savings_Account.h Savings_Account.cpp
-#        CheckingAccount.h CheckingAccount.cpp
-        InsufficientFundsException.h InsufficientFundsException.h)
+
+add_executable(18_ExceptionHandling main.cpp
+                AccountsClasses/Account.h
+                AccountsClasses/Account.cpp
+                AccountsClasses/Savings_Account.h
+                AccountsClasses/Savings_Account.cpp
+                )
+
+
