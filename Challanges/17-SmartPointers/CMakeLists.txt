@@ -10,5 +10,12 @@ add_executable(17_SmartPointers main.cpp
         Savings_Account.cpp Savings_Account.h
         TrustAccount.cpp TrustAccount.h
         IPrintable.h)
+
+#add_library(17_SmartPointersLib SHARED main.cpp
+#        Account.cpp Account.h
+#        CheckingAccount.cpp CheckingAccount.h
+#        Savings_Account.cpp Savings_Account.h
+#        TrustAccount.cpp TrustAccount.h
+#        IPrintable.h)
 #add_executable( Account.cpp Account.h CheckingAccount.cpp CheckingAccount.h IPrintable.h)
 

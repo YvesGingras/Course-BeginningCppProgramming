@@ -14,8 +14,7 @@ add_subdirectory(14-OperatorOverloading)
 add_subdirectory(15-Inheritance)
 add_subdirectory(16-Polymorphism)
 add_subdirectory(17-SmartPointers)
-
-
+add_subdirectory(18-ExceptionHandling)
 
 
 add_executable(Challanges main.cpp
@@ -31,4 +30,5 @@ add_executable(Challanges main.cpp
                 15-Inheritance main.cpp
                 16-Polymorphism main.cpp
                 17-SmartPointers main.cpp
+                18-ExceptionHandling main.cpp
                 )

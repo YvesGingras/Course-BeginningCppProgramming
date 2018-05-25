@@ -11,7 +11,7 @@ Account::Account(double balance)
     : balance(balance) { 
 }
             
-void Account::deposit(double amount) {   
+bool Account::deposit(double amount) {
     balance += amount;
 }
     
