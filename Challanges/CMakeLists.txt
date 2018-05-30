@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(Challanges)
 
 set(CMAKE_CXX_STANDARD 14)
+
 add_subdirectory(06-VariablesAndConstants)
 add_subdirectory(07-ArraysAndVectors)
 add_subdirectory(08-StatementsAndOperators)
@@ -15,7 +16,7 @@ add_subdirectory(15-Inheritance)
 add_subdirectory(16-Polymorphism)
 add_subdirectory(17-SmartPointers)
 add_subdirectory(18-ExceptionHandling)
-
+add_subdirectory(19-IOAndStreams)
 
 add_executable(Challanges main.cpp
                 06-VariablesAndConstants main.cpp
@@ -31,4 +32,5 @@ add_executable(Challanges main.cpp
                 16-Polymorphism main.cpp
                 17-SmartPointers main.cpp
                 18-ExceptionHandling main.cpp
+                19-IOAndStreams
                 )
