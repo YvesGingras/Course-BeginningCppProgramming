@@ -28,32 +28,28 @@ int main() {
 
     //Text creation - Beginning
     Ruler();
-    cout << setw((widthOverall - widthTitle) / 2 + 1) << left << "\n" << southAmericaTours.title << endl;
+    cout << "\n" << setw((widthOverall - widthTitle) / 2) << "" << southAmericaTours.title << endl;
 
     cout << setw(widthCountry) << left << "Country"
          << setw(widthCity) << left << "City"
          << setw(widthPopulation) << right << "Population"
          << setw(widthPrice) << right << "Price" << endl;
 
-    cout << setw(widthOverall) << left << setfill('-') << "" << endl;
+    cout << setw(widthOverall)
+         << left
+         << setfill('-')
+         << ""
+         << endl;
+
+    cout << setfill(' ');
+    cout << setprecision(2) << fixed;
 
     for(auto country : southAmericaTours.countries) {
-        cout << setw(widthCountry) << left  << setfill(' ') << country.name << flush;
-        int cityCounter{0};
-        for(auto city : country.cities) {
-            if (cityCounter == 0) {
-                cout << setprecision(2) << fixed
-                     << setw(widthCity) << left << city.name
-                     << setw(widthPopulation) << right << city.population
-                     << setw(widthPrice) << right << city.cost << endl;
-                ++cityCounter;
-            }
-            else {
-                cout << setw(widthCountry) << left << ""
-                     << setw(widthCity) << left << setfill(' ')<< city.name
-                     << setw(widthPopulation) << right << city.population
-                     << setw(widthPrice) << right << city.cost << endl;
-            }
+        for (size_t i = 0; i < country.cities.size(); ++i) {
+            cout << setw(widthCountry) << left  << (i == 0 ? country.name : "")
+                    << setw(widthCity) << left << country.cities.at(i).name
+                    << setw(widthPopulation) << right << country.cities.at(i).population
+                    << setw(widthPrice) << right << country.cities.at(i).cost << endl;
         }
     }
     //Text creation - End
