@@ -1,58 +1,101 @@
 #include <iostream>
-#include<iomanip>
-#include <exception>
-#include <string>
+#include <fstream>
+#include <iomanip>
 #include <vector>
-#include "Source/ToursFactory.h"
-#include "Source/Utility.h"
+
 
 using namespace std;
-
-
-
 
 
 int main() {
     cout << "Hello, 19-I/O and Streams!" << endl;
     cout << "#############################" << endl << endl;
 
-    unique_ptr<ToursFactory> toursFactory = make_unique<ToursFactory>();
-    Tours southAmericaTours = toursFactory->GetSouthAmericaTours();
+    const string sourcePath {"/Users/yvesgingras/Code/Repos/Course-BeginningCppProgramming/Challanges/19-IOAndStreams/Ressource"};
+    int lineCounter{0};
+    string line;
+    string answer;
+    vector<string> studentsNames;
+    vector<string> studentsAnswers;
+    vector<int> studentsScores;
 
-    const int widthOverall{70};
-    const auto widthTitle = static_cast<const int>(southAmericaTours.title.length());
-    const auto widthCountry{20};
-    const auto widthCity{20};
-    const auto widthPopulation{15};
-    const auto widthPrice {widthOverall - (widthCountry + widthCity + widthPopulation)};
+    //Extract data from file.
+    ifstream in_file;
+    in_file.open(sourcePath + "/Responses.txt");
+    if (!in_file) {
+        cerr << "Problem opening file" << endl;
+        return 1;
+    }
 
-    //Text creation - Beginning
-    Ruler();
-    cout << "\n" << setw((widthOverall - widthTitle) / 2) << "" << southAmericaTours.title << endl;
+    while (getline(in_file,line)){
+        if (lineCounter == 0) {
+            answer = line;
+        }
+        else if (lineCounter % 2 != 0) {
+            studentsNames.push_back(line);
+        }
+        else {
+            studentsAnswers.push_back(line);
+        }
+        ++lineCounter;
+    }
+    in_file.close();
 
-    cout << setw(widthCountry) << left << "Country"
-         << setw(widthCity) << left << "City"
-         << setw(widthPopulation) << right << "Population"
-         << setw(widthPrice) << right << "Price" << endl;
+    /*Calculating the scores*/
+        //student's individual...
+    for (auto& studentsAnswer : studentsAnswers) {
+        int currentScore{};
+        for (size_t j = 0; j < studentsAnswer.length()-1; ++j) {
+            if (studentsAnswer.at(j) == answer.at(j))
+                ++currentScore;
+        }
+
+        studentsScores.push_back(currentScore);
+    }
+
+
+    // Calculate student's average
+    double scoresTotal{};
+    double scoresAverage{};
+    for (auto&& score : studentsScores) {
+        scoresTotal += score;
+    }
+    scoresAverage = scoresTotal / studentsScores.size();
+
+    //Displaying Headers
+    const int widthOverall{30};
+    const int widthName{15};
+    const int widthScore{widthOverall - widthName};
+
+    cout << setw(widthName) << left << "Student"
+         << setw(widthScore) <<  right << "Score"
+         << endl;
 
     cout << setw(widthOverall)
-         << left
          << setfill('-')
          << ""
          << endl;
 
     cout << setfill(' ');
-    cout << setprecision(2) << fixed;
 
-    for(auto country : southAmericaTours.countries) {
-        for (size_t i = 0; i < country.cities.size(); ++i) {
-            cout << setw(widthCountry) << left  << (i == 0 ? country.name : "")
-                    << setw(widthCity) << left << country.cities.at(i).name
-                    << setw(widthPopulation) << right << country.cities.at(i).population
-                    << setw(widthPrice) << right << country.cities.at(i).cost << endl;
-        }
+    //Displaying the result
+    for (size_t studentCount = 0; studentCount < studentsScores.size(); ++studentCount) {
+        cout << setw(widthName) << left << studentsNames.at(studentCount).erase(studentsNames.at(studentCount).find('\r'))
+             << setw(widthScore) <<  right << studentsScores.at(studentCount)
+             << endl;
     }
-    //Text creation - End
+
+    //End of report separator
+    cout << setw(widthOverall)
+         << setfill('-')
+         << ""
+         << endl;
+
+    //Displaying average.
+    cout << setfill(' ');
+    cout << setw(widthName) << left << "Average score"
+         << setw(widthScore) <<  right << scoresAverage
+         << endl;
 
     cout << endl << endl;
 
