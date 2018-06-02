@@ -4,5 +4,6 @@ project(19_IOAndStreams)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(19_IOAndStreams main.cpp
-        Source/ToursFactory.cpp
-                )
+                Source/ToursFactory.cpp
+                Source/PrintToConsole.cpp
+                Source/Utility.cpp)

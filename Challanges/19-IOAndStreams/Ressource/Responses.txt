@@ -9,3 +9,12 @@ Curly
 BBAAE
 Michael
 BBCDE
+John
+BBCYZ
+Joseph
+ABCDE
+Ronald
+ABCDE
+Kim
+ABCDE
+c

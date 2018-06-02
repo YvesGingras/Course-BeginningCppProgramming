@@ -2,9 +2,12 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
+#include "Source/Utility.h"
+#include "Source/PrintToConsole.h"
 
 
 using namespace std;
+
 
 
 int main() {
@@ -12,12 +15,15 @@ int main() {
     cout << "#############################" << endl << endl;
 
     const string sourcePath {"/Users/yvesgingras/Code/Repos/Course-BeginningCppProgramming/Challanges/19-IOAndStreams/Ressource"};
+    const int widthOverall{30};
+    const int widthName{15};
+    const int widthScore{widthOverall - widthName};
     int lineCounter{0};
     string line;
     string answer;
-    vector<string> studentsNames;
-    vector<string> studentsAnswers;
-    vector<int> studentsScores;
+    vector<string> studentsNames{};
+    vector<string> studentsAnswers{};
+    vector<int> studentsScores{};
 
     //Extract data from file.
     ifstream in_file;
@@ -28,76 +34,30 @@ int main() {
     }
 
     while (getline(in_file,line)){
-        if (lineCounter == 0) {
+        if (lineCounter == 0)
             answer = line;
-        }
-        else if (lineCounter % 2 != 0) {
+        else if (lineCounter % 2 != 0)
             studentsNames.push_back(line);
-        }
-        else {
+        else
             studentsAnswers.push_back(line);
-        }
+
         ++lineCounter;
     }
     in_file.close();
 
-    /*Calculating the scores*/
-        //student's individual...
-    for (auto& studentsAnswer : studentsAnswers) {
-        int currentScore{};
-        for (size_t j = 0; j < studentsAnswer.length()-1; ++j) {
-            if (studentsAnswer.at(j) == answer.at(j))
-                ++currentScore;
-        }
+    Utility::CalculateScoresChallenge2(answer, studentsAnswers, studentsScores);
 
-        studentsScores.push_back(currentScore);
-    }
+    double scoresAverage = Utility::CalculateAverageChallenge2(studentsScores);
 
+    PrintToConsole::DisplayHeaderChallenge2(widthOverall, widthName, widthScore);
 
-    // Calculate student's average
-    double scoresTotal{};
-    double scoresAverage{};
-    for (auto&& score : studentsScores) {
-        scoresTotal += score;
-    }
-    scoresAverage = scoresTotal / studentsScores.size();
+    PrintToConsole::DisplayResultChallenge2(widthName, widthScore, studentsNames, studentsScores);
 
-    //Displaying Headers
-    const int widthOverall{30};
-    const int widthName{15};
-    const int widthScore{widthOverall - widthName};
-
-    cout << setw(widthName) << left << "Student"
-         << setw(widthScore) <<  right << "Score"
-         << endl;
-
-    cout << setw(widthOverall)
-         << setfill('-')
-         << ""
-         << endl;
-
-    cout << setfill(' ');
-
-    //Displaying the result
-    for (size_t studentCount = 0; studentCount < studentsScores.size(); ++studentCount) {
-        cout << setw(widthName) << left << studentsNames.at(studentCount).erase(studentsNames.at(studentCount).find('\r'))
-             << setw(widthScore) <<  right << studentsScores.at(studentCount)
-             << endl;
-    }
-
-    //End of report separator
-    cout << setw(widthOverall)
-         << setfill('-')
-         << ""
-         << endl;
-
-    //Displaying average.
-    cout << setfill(' ');
-    cout << setw(widthName) << left << "Average score"
-         << setw(widthScore) <<  right << scoresAverage
-         << endl;
+    PrintToConsole::DisplayFooterChallenge2(widthOverall, widthName, widthScore, scoresAverage);
 
     cout << endl << endl;
 
     return 0;
 }
+
+
