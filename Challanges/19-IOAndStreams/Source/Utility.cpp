@@ -29,3 +29,8 @@ double Utility::CalculateAverageChallenge2(const vector<int>& studentsScores) {
     scoresAverage = static_cast<double>(scoresTotal) / studentsScores.size();
     return scoresAverage;
 }
+
+bool Utility::IsSubstringPresentChallenge3(const string& searchSubString, const string& word) {
+    size_t position = word.find(searchSubString);
+    return position != string::npos;
+}

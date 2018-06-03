@@ -5,8 +5,11 @@
 #include "Source/Utility.h"
 #include "Source/PrintToConsole.h"
 
-
 using namespace std;
+
+//bool IsSubstringPresentChallenge3(string basic_string, string basicString);
+
+
 
 
 
@@ -15,47 +18,35 @@ int main() {
     cout << "#############################" << endl << endl;
 
     const string sourcePath {"/Users/yvesgingras/Code/Repos/Course-BeginningCppProgramming/Challanges/19-IOAndStreams/Ressource"};
-    const int widthOverall{30};
-    const int widthName{15};
-    const int widthScore{widthOverall - widthName};
-    int lineCounter{0};
-    string line;
-    string answer;
-    vector<string> studentsNames{};
-    vector<string> studentsAnswers{};
-    vector<int> studentsScores{};
 
-    //Extract data from file.
+    //getting user input
+    string searchSubString{};
+    cout << "Enter the substring to search for: ";
+    cin >> searchSubString;
+
+    /* Getting the file */
     ifstream in_file;
-    in_file.open(sourcePath + "/Responses.txt");
+    in_file.open(sourcePath + "/RomeoAndJuliet.txt");
     if (!in_file) {
         cerr << "Problem opening file" << endl;
         return 1;
     }
 
-    while (getline(in_file,line)){
-        if (lineCounter == 0)
-            answer = line;
-        else if (lineCounter % 2 != 0)
-            studentsNames.push_back(line);
-        else
-            studentsAnswers.push_back(line);
-
-        ++lineCounter;
+    /* Processing... */
+    string word{};
+    long totalWordsCount{};
+    long totalSubstringFound{};
+    while (in_file >> word) {
+        ++totalWordsCount;
+        if(Utility::IsSubstringPresentChallenge3(searchSubString, word))
+            ++totalSubstringFound;
     }
+
     in_file.close();
 
-    Utility::CalculateScoresChallenge2(answer, studentsAnswers, studentsScores);
-
-    double scoresAverage = Utility::CalculateAverageChallenge2(studentsScores);
-
-    PrintToConsole::DisplayHeaderChallenge2(widthOverall, widthName, widthScore);
-
-    PrintToConsole::DisplayResultChallenge2(widthName, widthScore, studentsNames, studentsScores);
-
-    PrintToConsole::DisplayFooterChallenge2(widthOverall, widthName, widthScore, scoresAverage);
-
-    cout << endl << endl;
+    /* output to console. */
+    cout << totalWordsCount << " words were found..." << "\n"
+         << "The substring " << searchSubString << " was found " <<  totalSubstringFound << " time(s)." << endl;
 
     return 0;
 }
