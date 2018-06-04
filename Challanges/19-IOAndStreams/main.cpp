@@ -1,7 +1,9 @@
+// stringstreams
 #include <iostream>
-#include <fstream>
 #include <iomanip>
-
+#include <sstream>
+#include <string>
+#include <limits>
 
 using namespace std;
 
@@ -11,36 +13,48 @@ int main() {
     cout << "Hello, 19-I/O and Streams!" << endl;
     cout << "#############################" << endl << endl;
 
-    const string sourcePath {"/Users/yvesgingras/Code/Repos/Course-BeginningCppProgramming/Challanges/19-IOAndStreams/Ressource/"};
+    int num{};
+    double total{};
+    string name{};
 
-    ifstream in_file{sourcePath + "RomeoAndJuliet.txt"};
-    ofstream out_file{sourcePath + "RomeoAndJulietOutChallenge4.txt"};
+    string info {"Moe 100 1234.5"};
+    istringstream iss {info};
 
-    if (!out_file) {
-        cerr << "Error opening output file!" << endl;
-        return 1;
-    }
+    iss >> name  >> num >>  total;
+    cout << setw(10) << left << name
+              << setw(5) << num
+              << setw(10) << total << endl;
 
-    if (!in_file) {
-        cerr << "Error opening input file!" << endl;
-        return 1;
-    }
+    cout << "\n---------------------------------------" << endl;
 
-    //getting user input
-    string line{};
-    long lineCounter{};
-    while (std::getline(in_file,line)){
-        if (line != "\r"){
-            ++lineCounter;
-            out_file << setw(10) << left << lineCounter << line << endl;
-        }
-        else {
-            out_file << line << endl;
-        }
-    }
-    cout << "File copied!" << endl;
-    in_file.close();
-    out_file.close();
+    ostringstream oss {};
+    oss << setw(10) << left << name
+        << setw(5) << num
+        << setw(10) << total << endl;
+    cout << oss.str() << endl;
+
+
+    cout << "\n--- Data validation ------------------------------------" << endl;
+
+    int value{};
+    string entry {};
+    bool done = false;
+    do {
+        cout << "Please enter an integer: ";
+        cin >> entry;
+        istringstream validator {entry};
+        if (validator >> value)
+            done = true;
+        else
+            cout << "Sorry, that's not an integer" << endl;
+
+        // discards the input buffer
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    } while (!done);
+
+    cout << "You entered the integer: " << value << endl;
+
+    cout << endl;
 
     return 0;
 }
