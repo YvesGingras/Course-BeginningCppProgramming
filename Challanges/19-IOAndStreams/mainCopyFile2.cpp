@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <iomanip>
 
 
 using namespace std;
@@ -13,8 +12,8 @@ int main() {
 
     const string sourcePath {"/Users/yvesgingras/Code/Repos/Course-BeginningCppProgramming/Challanges/19-IOAndStreams/Ressource/"};
 
-    ifstream in_file{sourcePath + "RomeoAndJuliet.txt"};
-    ofstream out_file{sourcePath + "RomeoAndJulietOutChallenge4.txt"};
+    ifstream in_file{sourcePath + "Poem.txt"};
+    ofstream out_file{sourcePath + "PoemOut2.txt"};
 
     if (!out_file) {
         cerr << "Error opening output file!" << endl;
@@ -27,17 +26,10 @@ int main() {
     }
 
     //getting user input
-    string line{};
-    long lineCounter{};
-    while (std::getline(in_file,line)){
-        if (line != "\r"){
-            ++lineCounter;
-            out_file << setw(10) << left << lineCounter << line << endl;
-        }
-        else {
-            out_file << line << endl;
-        }
-    }
+    char c;
+    while (in_file.get(c))
+        out_file.put(c);
+
     cout << "File copied!" << endl;
     in_file.close();
     out_file.close();

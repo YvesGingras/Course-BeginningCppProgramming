@@ -16,6 +16,7 @@ public:
     }
 
     static void CalculateScoresChallenge2(std::string& answer, const std::vector<std::string>& studentsAnswers,
+                                          std::vector<int>& studentsScores);
 
     static double CalculateAverageChallenge2(const std::vector<int>& studentsScores);
 
