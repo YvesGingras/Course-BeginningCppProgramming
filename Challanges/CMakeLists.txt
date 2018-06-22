@@ -17,6 +17,7 @@ add_subdirectory(16-Polymorphism)
 add_subdirectory(17-SmartPointers)
 add_subdirectory(18-ExceptionHandling)
 add_subdirectory(19-IOAndStreams)
+add_subdirectory(20-STL)
 
 add_executable(Challanges main.cpp
                 06-VariablesAndConstants main.cpp
@@ -33,4 +34,5 @@ add_executable(Challanges main.cpp
                 17-SmartPointers main.cpp
                 18-ExceptionHandling main.cpp
                 19-IOAndStreams
+                20-STL
                 )

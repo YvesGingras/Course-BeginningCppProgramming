@@ -76,6 +76,8 @@ Section2/.idea/**
 /Challanges/17-SmartPointers/.idea/**
 /Challanges/18-ExceptionHandling/.idea/**
 /Challanges/19-IOAndStreams/.idea/**
+/Challanges/20-STL/.idea/**
+
 
 
 # CMake
