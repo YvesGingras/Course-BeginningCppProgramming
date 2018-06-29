@@ -1,139 +1,130 @@
 #include <iostream>
 #include <vector>
-#include <set>
-#include<map>
-#include<list>
+#include <algorithm>
+#include <list>
+#include <cctype>
+#include "Person.h"
 
 using namespace std;
 
-// display any vector of integers using range-based for loop
-void display(const vector<int> &vec) {
-    cout << "[ ";
-    for (auto const &i: vec) {
-        cout << i << " ";
-    }
-    cout << "]" << endl;
-}
+void FindTest() {
+    cout << "\n=============================" << endl;
 
 
-
-void test1() {
-    cout << "\n=========================================" << endl;
-    vector<int> nums1 {1, 2, 3, 4, 5};
-    auto iterator = nums1.begin();
-    cout << *iterator << endl;
-
-    iterator++;
-    cout << *iterator << endl;
-
-    iterator+= 2;
-    cout << *iterator << endl;
-
-    iterator-= 2;
-    cout << *iterator << endl;
-
-    iterator = nums1.end() -1;
-    cout << *iterator << endl;
-}
-
-void test2() {
-    cout << "\n=========================================" << endl;
-    vector<int> nums1 {1, 2, 3, 4, 5};
-
-    vector<int>::iterator iterator = nums1.begin();
-    while (iterator != nums1.end()) {
-        cout << *iterator << endl;
-        iterator++;
-    }
-
-    iterator = nums1.begin();
-    while (iterator != nums1.end()) {
-        *iterator = 0;
-        iterator++;
-    }
-
-    display(nums1);
-}
-
-void test3() {
-    cout << "\n=========================================" << endl;
-    vector<int> nums1 {1, 2, 3, 4, 5};
-
-
-    auto iterator = nums1.cbegin(); // equivalent of following line...
-//    vector<int>::const_iterator iterator = nums1.begin();
-
-    while (iterator != nums1.end()) {
-        cout << *iterator << endl;
-        iterator++;
-    }
-
-    iterator = nums1.begin();
-    while (iterator != nums1.end()) {
-        // iterator = 0; //compiler error
-        iterator++;
-    }
-
-    display(nums1);
-}
-
-void test4() {
-    cout << "\n=========================================" << endl;
+    //region 'integer' with 'vector'.
     vector<int> myVector {1, 2, 3, 4, 5};
-    auto iteraror1 = myVector.rbegin();
+    //cal to the STL
+    auto loc = find(begin(myVector), myVector.end(),1); //using 2 different ways to define the iterators.
 
-    while (iteraror1 != myVector.rend()) {
-        cout << *iteraror1 << endl;
-        iteraror1++;
-    }
+    if (loc != end(myVector))
+        cout << "Found the number " << *loc << "." << endl;
+    else
+        cout << "Couldn't find the number." << endl;
+    //endregion
 
-    //const reverse iterator over a list.
-    list<string> names {"Larry", "Moe", "Curly"};
-    auto iterator2 = names.crbegin(); // iterator over a list of strings, point to Curly.
-    cout << *iterator2 << endl;
-
-    iterator2++; //points to Moe.
-    cout << *iterator2 << endl;
-
-    //iterator over a map.
-    map<string, string> favorites {
-        {"Frank", "C++"},
-        {"Bill", "Java"},
-        {"James", "C#"}
+    //region Players objects with 'list'.
+    list<Person> players {
+        {"Larry",18},
+        {"Moe", 20},
+        {"Curly", 21}
     };
 
-    auto iterator3 = favorites.begin();
-    while (iterator3 != favorites.end()) {
-        cout << iterator3->first << " : " << iterator3->second << endl;
-        iterator3++;
-    }
+    //call to the STL
+    auto loc1 = find(players.begin(),players.end(), Person{"Moe",20});
+
+    if (loc1 != players.end())
+        cout << "Found Moe." << endl;
+    else
+        cout << "Moe not found." << endl;
+    //endregion
+}
+
+void CountTest() {
+    cout << "\n=============================" << endl;
+
+
+    //region 'integer' with 'vector'.
+    vector<int> myVector {1, 2, 3, 4, 5, 1, 2, 1};
+
+    int num = static_cast<int>(count (myVector.begin(), myVector.end(), 10));
+    cout << num << " occurence(s) found" << endl;
 
 }
 
-void test5() {
-    cout << "\n=========================================" << endl;
-    vector<int> myVector {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    auto start = myVector.begin() + 2;
-    auto finish = myVector.end() -3;
-
-    while (start != finish) {
-        cout << *start << endl;
-        start++;
-    }
+void CountIfTest() {
+    cout << "\n=============================" << endl;
 
 
+    //region 'integer' with 'vector'.
+    vector<int> myVector {1, 2, 3, 4, 5, 1, 2, 1, 100};
+
+    int num = static_cast<int>(count_if(myVector.begin(), myVector.end()
+            , [](int x) { return x % 2 == 0;}));
+    cout << num << " even number(s) found" << endl;
+
+    num = static_cast<int>(count_if(myVector.begin(), myVector.end(), [](int x) { return x % 2 != 0; }));
+    cout << num << " odd number(s) found" << endl;
+
+    num = static_cast<int>(count_if(myVector.begin(), myVector.end(), [](int x) { return x >= 5; }));
+    cout << num << " number(s) are greater than 5." << endl;
 }
 
+void ReplaceeTest() {
+    cout << "\n=============================" << endl;
 
+
+    //region 'integer' with 'vector'.
+    vector<int> myVector {1, 2, 3, 4, 5, 1, 2, 1};
+
+    for (auto&& item : myVector)
+        cout << item << " ";
+    cout << endl;
+
+    replace(begin(myVector),myVector.end(), 1, 100);
+    for (auto&& item : myVector)
+        cout << item << " ";
+    cout << endl;
+}
+
+void AllOfTest() {
+    cout << "\n=============================" << endl;
+
+
+    //region 'integer' with 'vector'.
+    vector<int> myVector {1, 3, 5, 7, 9, 1, 13, 19 ,5};
+
+    if (all_of(begin(myVector),myVector.end(), [](int x) { return x > 10;}))
+        cout << "All elements are > 10" << endl;
+    else
+        cout << "Not all elements are > 10" << endl;
+
+    if (all_of(begin(myVector),end(myVector), [](int x) { return x < 20;}))
+        cout << "All elements are < 20" << endl;
+    else
+        cout << "Not all elements are < 20" << endl;
+}
+
+void StringTransform() {
+    cout << "\n=============================" << endl;
+
+    string myString {"This is a test."};
+    cout << "Before transform: " << myString << endl;
+
+    transform(myString.begin(),end(myString),myString.begin(),::toupper);
+    cout << "After transform: " << myString << endl;
+}
 
 
 int main() {
     cout << "\nHello, 20-STL!\n" << endl;
-//    test1();
-//    test2();
-//    test3();
-//    test4();
-    test5();
+
+    FindTest();
+    CountTest();
+    CountIfTest();
+    ReplaceeTest();
+    AllOfTest();
+    StringTransform();
+
 
     return 0;
 }
