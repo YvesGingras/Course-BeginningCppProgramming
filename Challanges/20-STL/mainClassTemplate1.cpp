@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "Item.h"
-#include "MyPair.h"
+#include "Source/Item.h"
+#include "Source/MyPair.h"
 
 using namespace std;
 

@@ -9,10 +9,23 @@
 #include <string>
 using std::string;
 
+
+
+
 class  Person
 {
     string name;
+    int age{};
 public:
+
+
+
+public:
+    Person() = default;
+
+    Person(string name, int age)
+            : name(name), age(age) {}
+
     const string& GetName() const {
         return name;
     }
@@ -29,14 +42,6 @@ public:
         Person::age = age;
     }
 
-private:
-    int age{};
-
-public:
-    Person() = default;
-
-    Person(string name, int age)
-            : name(name), age(age) {}
 
     bool operator<(const Person& rhs) const {
         return this->age < rhs.age;

@@ -3,4 +3,8 @@ project(20_STL)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Item.h MyPair.h MyArray.h Person.h 20_STL main.cpp )
+add_executable( 20_STL main.cpp
+                Source/Item.h
+                Source/MyPair.h
+                Source/MyArray.h
+                Source/Person.h)

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <list>
 #include <cctype>
-#include "Person.h"
+#include "Source/Person.h"
 
 using namespace std;
 
