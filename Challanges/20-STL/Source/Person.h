@@ -7,18 +7,16 @@
 
 
 #include <string>
+#include <ostream>
+
 using std::string;
-
-
-
+using std::ostream;
 
 class  Person
 {
+    friend ostream& operator<<(ostream& ostream, const Person& person);
     string name;
     int age{};
-public:
-
-
 
 public:
     Person() = default;
@@ -53,5 +51,11 @@ public:
     }
 
 };
+
+ostream& operator<<(ostream& ostream, const Person& person) {
+    ostream << person.name << ":" << person.age;
+    return ostream;
+}
+
 
 #endif //INC_20_STL_PERSON_H

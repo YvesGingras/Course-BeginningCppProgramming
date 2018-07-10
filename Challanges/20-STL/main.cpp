@@ -1,23 +1,27 @@
 #include <iostream>
-#include <array>
+#include <vector>
+#include "Source/Person.h"
 
 using namespace std;
 
-// Display the array -- note the size MUST be included
-// when passing a std::array to a function
-void display(const std::array<int, 5> &array) {
-    std::cout << "[ ";
-    for (const auto &i: array)
-        std::cout << i << " ";
-    std::cout <<  "]"<< std::endl;
+template <typename T>
+void display(const vector<T>& myVector) {
+    cout << "[ ";
+    for (const auto& item : myVector) {
+        cout << item << " ";
+    }
+    cout << "]" << endl;
 }
 
+void display2(const vector<int>& myVector) {
+    cout << "[ ";
+    for_each(myVector.begin(),myVector.end(), [](int x){cout << x << " ";});
+    cout << "]" << endl;
+}
 
 
 int main() {
     cout << "\nHello, 20-STL!\n" << endl;
-
-
 
 
     return 0;
