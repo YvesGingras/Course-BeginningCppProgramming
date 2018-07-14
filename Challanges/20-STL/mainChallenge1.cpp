@@ -31,6 +31,32 @@ vector<string> TestStringFactory() {
 
 bool is_palindrome(const string& s)
 {
+    deque<char> tempString;
+    for (auto&& character : s) {
+        if (isalpha(character)) {
+            tempString.push_back(static_cast<char>(toupper(character)));
+        }
+    }
+
+    //false if back and front characters (2 by 2) are not the same.
+    char frontChar{};
+    char backChar{};
+
+    while (tempString.size() > 1) {
+        frontChar = tempString.front();
+        backChar = tempString.back();
+
+        tempString.pop_front();
+        tempString.pop_back();
+
+        if (frontChar != backChar)
+            return false;
+    }
+    return true;
+}
+
+bool is_palindromeYG(const string& s)
+{
     string tempString {};
     string tempStringReverse {};
     deque<char> dequeStringReverse;
