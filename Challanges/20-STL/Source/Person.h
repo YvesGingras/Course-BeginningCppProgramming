@@ -19,7 +19,7 @@ class  Person
     int age{};
 
 public:
-    Person() = default;
+    Person() : name {"Unknown"}, age {0} {}
 
     Person(string name, int age)
             : name(name), age(age) {}
