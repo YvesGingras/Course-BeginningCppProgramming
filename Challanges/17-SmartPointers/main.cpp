@@ -26,7 +26,7 @@ public:
 // Function prototypes
 unique_ptr<vector<shared_ptr<Test>>> make();
 void fill(vector<shared_ptr<Test>> &vec, int num);
-void display(const vector<shared_ptr<Test>>&vec);
+void display(const vector<shared_ptr<Test>>&myMap);
 
 //Functions definitions
 unique_ptr<vector<shared_ptr<Test>>> make(){
