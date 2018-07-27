@@ -7,4 +7,4 @@ add_executable( 20_STL main.cpp
                 Source/Item.h
                 Source/MyPair.h
                 Source/MyArray.h
-                Source/Person.h)
+                Source/Person.h Challenge3Functions.h)
